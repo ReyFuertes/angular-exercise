@@ -1,0 +1,12 @@
+
+:host ::ng-deep {
+  .mat-drawer-inner-container {
+    min-width: 240px;
+  }
+  .mat-drawer-container {
+    height: 100%;
+  }
+  .sidenav {
+    height: calc(100% - 50px);
+  }
+}

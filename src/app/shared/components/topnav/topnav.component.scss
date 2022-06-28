@@ -1,0 +1,28 @@
+@import "src/styleguide/index";
+.spacer {
+  flex: 1 1 auto;
+}
+:host ::ng-deep {
+  .mat-toolbar {
+    color: $color-white-1;
+    background-color: $color-blue-1;
+    .logo {
+      width: 160px;
+      height: auto;
+    }
+    button {
+      display: flex;
+      align-items: center;
+      align-content: center;
+      background-color: transparent;
+      border: none;
+      color: $color-white-1;
+      margin-right: 10px;
+    }
+    .profile-pic {
+      width: 40px;
+      height: 40px;
+      border-radius: 100%;
+    }
+  }
+}

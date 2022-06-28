@@ -1,0 +1,28 @@
+<!-- <div *ngIf="($notify | async)" class="notification" [ngClass]="{'error': ($notify | async)?.error, 'success': ($notify | async)?.success }">
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <p fxFlex>{{($notify | async)?.message}}</p>
+    <div (click)="onClose()" fxFlex="40px">
+      <i class="pi pi-times"></i>
+    </div>
+  </div>
+</div> -->
+
+<!-- <p-blockUI [blocked]="(loaderSrv?.isLoading | async)">
+  <div fxFlexFill fxLayout="row" fxLayoutAlign="center center">
+    <img [src]="svgPath + 'loader.svg'" />
+  </div>
+</p-blockUI> -->
+
+<div fxFlexFill>
+  <div class="contents" fxFlex>
+    <app-topnav></app-topnav>
+    <mat-drawer-container class="container" autosize>
+      <mat-drawer #drawer class="sidenav" mode="side" [opened]="toggleSideNav">
+        test
+      </mat-drawer>
+    </mat-drawer-container>
+    <div class="router-outlet" fxFlexFill>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
