@@ -15,10 +15,9 @@
 
 <div fxFlexFill>
   <div class="contents" fxFlex>
-    <app-topnav></app-topnav>
+    <app-topnav (valueEmitter)="handleToggleValue($event)"></app-topnav>
     <mat-drawer-container class="container" autosize>
       <mat-drawer #drawer class="sidenav" mode="side" [opened]="toggleSideNav">
-        test
       </mat-drawer>
     </mat-drawer-container>
     <div class="router-outlet" fxFlexFill>
