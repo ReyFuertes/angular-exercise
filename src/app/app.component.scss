@@ -1,4 +1,5 @@
 
+@import "src/styleguide/index";
 :host ::ng-deep {
   .mat-drawer-inner-container {
     min-width: 240px;
@@ -8,5 +9,29 @@
   }
   .sidenav {
     height: calc(100% - 50px);
+  }
+  section {
+    display: flex;
+    align-content: baseline;
+    align-items: start;
+    flex-direction: column;
+    padding: 20px;
+    background-color: $color-black-1;
+    height: -webkit-fill-available;
+  }
+  .mat-checkbox-frame {
+    border-color: $color-black-4;
+  }
+  .red .mat-checkbox-label {
+    color: $color-red-1;
+  }
+  .teal .mat-checkbox-label {
+    color: $color-teal-1;
+  }
+  .blue .mat-checkbox-label {
+    color: $color-blue-1;
+  }
+  .dark .mat-checkbox-label {
+    color: $color-dark-1;
   }
 }

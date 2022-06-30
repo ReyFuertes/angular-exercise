@@ -20,6 +20,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatListModule,
     CdkAccordionModule,
     MatIconModule,
+    MatCheckboxModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
     StoreModule.forRoot(reducers),

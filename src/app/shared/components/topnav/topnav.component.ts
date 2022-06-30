@@ -13,19 +13,26 @@ import { RootState } from 'src/app/store/root.reducer';
 
 export class TopNavComponent extends GenericDestroyPageComponent {
   @ViewChild('search') searchElement: ElementRef;
-  @Output() valueEmitter: EventEmitter<boolean> = new EventEmitter();
+  @Output() ToggleLeftSideNav: EventEmitter<boolean> = new EventEmitter();
+  @Output() ToggleRightSideNav: EventEmitter<boolean> = new EventEmitter();
 
   public imgPath: string = environment.imgPath;
   public showAppSearch: boolean = false;
-  public toggleSideNav: boolean = true;
+  public leftToggleSideNav: boolean = true;
+  public rightToggleSideNav: boolean = false;
 
   constructor(private router: Router, private store: Store<RootState>) {
     super();
   }
 
-  public onToggleSideNav(): void {
-    this.toggleSideNav = !this.toggleSideNav;
-    this.valueEmitter.emit(this.toggleSideNav);
+  public onRightToggleSideNav(): void {
+    this.rightToggleSideNav = !this.rightToggleSideNav;
+    this.ToggleRightSideNav.emit(this.rightToggleSideNav);
+  }
+
+  public onLeftToggleSideNav(): void {
+    this.leftToggleSideNav = !this.leftToggleSideNav;
+    this.ToggleLeftSideNav.emit(this.leftToggleSideNav);
   }
 
   public showSearch(): void {

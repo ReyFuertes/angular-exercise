@@ -8,7 +8,7 @@
   <div fxLayout="row" fxLayoutAlign="center center" class="logo">
     <img [src]="imgPath + 'cognizant-logo.png'" alt="user">
   </div>
-  <button (click)="onToggleSideNav()" mat-icon-button class="burger-icon">
+  <button (click)="onLeftToggleSideNav()" mat-icon-button class="burger-icon">
     <mat-icon>menu</mat-icon>
   </button>
   <button (click)="showSearch()" mat-icon-button class="mat-focus-indicator mat-menu-trigger m-r-5 mat-icon-button mat-button-base">
@@ -22,7 +22,7 @@
     <mat-icon>email</mat-icon>
   </button>
   <img [src]="imgPath + 'profile-pic.jpg'" alt="user" class="profile-pic">
-  <button mat-icon-button class="mat-focus-indicator ml-xs overflow-visible mat-icon-button mat-button-base">
+  <button (click)="onRightToggleSideNav()" mat-icon-button class="mat-focus-indicator ml-xs overflow-visible mat-icon-button mat-button-base">
     <mat-icon>settings</mat-icon>
   </button>
 </mat-toolbar>

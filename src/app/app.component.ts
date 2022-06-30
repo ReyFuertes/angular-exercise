@@ -13,11 +13,16 @@ export class AppComponent {
   public isLoggedIn: boolean = false;
   public svgPath: string = environment.svgPath;
   public hideTopNav: boolean = false;
-  public toggleSideNav: boolean = true;
+  public leftToggleSideNav: boolean = true;
+  public rightToggleSideNav: boolean = false;
   public items: string[] = ['Auth'];
-  public expandedIndex: number = 0;
 
-  public handleToggleValue(event: boolean): void {
-    this.toggleSideNav = event;
+  public handRightToggleValue(event: boolean): void {
+    this.rightToggleSideNav = event;
   }
+
+  public handleLeftToggleValue(event: boolean): void {
+    this.leftToggleSideNav = event;
+  }
+  
 }
