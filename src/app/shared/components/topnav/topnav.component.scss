@@ -6,9 +6,51 @@
   .mat-toolbar {
     color: $color-white-1;
     background-color: $color-blue-1;
-    .logo {
-      width: 160px;
-      height: auto;
+    .app-search {
+      width: 100%;
+      top: 0px;
+      left: 0px;
+      right: 0;
+      z-index: 99;
+      position: absolute;
+      display: flex;
+      input {
+        padding: 10px;
+        width: -webkit-fill-available;
+        height: 45px;
+        font-size: 16px;
+        border-right: none;
+        border-left: none;
+        border-top: thin $color-gray-3 solid;
+        border-bottom: thin $color-gray-3 solid;
+      }
+      button {
+        color: $color-gray-1;
+        background-color: $color-white-1;
+        margin: 0;
+        border-bottom: thin $color-gray-3 solid;
+      }
+      input:focus {
+        outline: none;
+      }
+      .show-search {
+        display: block;
+      }
+      .cl-srh-btn {
+        position: absolute;
+        top: 12px;
+        right: 15px;
+        font-size: 15px;
+        color: #67757c;
+        cursor: pointer;
+      }
+    }
+    div.logo {
+      padding-right: 50px;
+      img {
+        width: 180px;
+        height: auto;
+      }
     }
     button {
       display: flex;
@@ -18,6 +60,7 @@
       border: none;
       color: $color-white-1;
       margin-right: 10px;
+      cursor: pointer;
     }
     .profile-pic {
       width: 40px;
