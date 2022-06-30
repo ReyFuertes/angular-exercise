@@ -14,4 +14,10 @@ export class AppComponent {
   public svgPath: string = environment.svgPath;
   public hideTopNav: boolean = false;
   public toggleSideNav: boolean = true;
+  public items: string[] = ['Auth'];
+  public expandedIndex: number = 0;
+
+  public handleToggleValue(event: boolean): void {
+    this.toggleSideNav = event;
+  }
 }

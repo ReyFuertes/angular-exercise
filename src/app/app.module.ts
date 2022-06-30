@@ -17,6 +17,9 @@ import { AppRoutingModule } from './app.routing';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from './shared/shared.module';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     FlexLayoutModule,
     AppRoutingModule,
     MatSidenavModule,
+    MatListModule,
+    CdkAccordionModule,
+    MatIconModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
     StoreModule.forRoot(reducers),
