@@ -1,0 +1,42 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="login-container" fxFlexFill>
+  <mat-card>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <img [src]="imgPath + 'logo-icon.png'" />
+      <h4>Login to App</h4>
+    </div>
+    <div [formGroup]="form">
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="username" placeholder="Ex. pat@example.com">
+        <mat-error *ngIf="!form.get('username').hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="form.get('username').hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" placeholder="6 letter password">
+        <mat-error *ngIf="!form.get('password').hasError('required')">
+          Password Invalid
+        </mat-error>
+        <mat-error *ngIf="form.get('password').hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
+      <div class="rm-fp" fxLayout="row" fxLayoutAlign="start center">
+        <div fxFlex="50"><mat-checkbox class="remember-me">Remember Me</mat-checkbox></div>
+        <div fxFlex="50" fxLayoutAlign="end center">Forgot pwd?</div>
+      </div>
+
+      <button mat-flat-button class="primary">LOGIN</button>
+
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <div>Don't have an account? <span class="register">Register</span></div>
+      </div>
+    </div>
+  </mat-card>
+</div>

@@ -15,52 +15,62 @@
 
 <div fxFlexFill>
   <div class="contents" fxFlex>
-    <app-topnav (ToggleLeftSideNav)="handleLeftToggleValue($event)" (ToggleRightSideNav)="handRightToggleValue($event)"></app-topnav>
+    <app-topnav *ngIf="isLoggedIn" (ToggleLeftSideNav)="handleLeftToggleValue($event)"
+      (ToggleRightSideNav)="handRightToggleValue($event)">
+    </app-topnav>
     <mat-drawer-container class="container" autosize>
-      <mat-sidenav #sidenav mode="side" [opened]="leftToggleSideNav">
-        <mat-nav-list>
-          <a mat-list-item>Home</a>
-          <a mat-list-item>Page1</a>
-          <a mat-list-item>Information</a>
-        </mat-nav-list>
-        <cdk-accordion class="accordion">
-          <cdk-accordion-item *ngFor="let item of items; let index = index;" #accordionItem="cdkAccordionItem"
-            role="button" tabindex="0">
-            <div class="accordion-item-header" (click)="accordionItem.toggle()">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <ng-container *ngIf="isLoggedIn">
+          <div *ngIf="leftToggleSideNav" [fxFlex]="leftToggleSideNav === true ? '240px' : 0">
+            <mat-sidenav #sidenav mode="side" [opened]="leftToggleSideNav">
               <mat-nav-list>
-                <div class="noselect" fxFlex fxLayout="row" fxLayoutAlign="start center">
-                  <a mat-list-item>
-                    <span fxFlex="90">{{ item }}</span>
-                    <mat-icon *ngIf="!accordionItem.expanded">expand_less</mat-icon>
-                    <mat-icon *ngIf="accordionItem.expanded">expand_more</mat-icon>
-                  </a>
-                </div>
+                <a mat-list-item>Home</a>
+                <a mat-list-item>Page1</a>
+                <a mat-list-item>Information</a>
               </mat-nav-list>
-            </div>
-            <div class="accordion-item-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none'"
-              [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
-              <mat-nav-list>
-                <a mat-list-item>Login</a>
-                <a mat-list-item>Registration</a>
-                <a mat-list-item>ForgotPassword</a>
-              </mat-nav-list>
-            </div>
-          </cdk-accordion-item>
-        </cdk-accordion>
-      </mat-sidenav>
+              <cdk-accordion class="accordion">
+                <cdk-accordion-item *ngFor="let item of items; let index = index;" #accordionItem="cdkAccordionItem"
+                  role="button" tabindex="0">
+                  <div class="accordion-item-header" (click)="accordionItem.toggle()">
+                    <mat-nav-list>
+                      <div class="noselect" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                        <a mat-list-item>
+                          <span fxFlex="90">{{ item }}</span>
+                          <mat-icon *ngIf="!accordionItem.expanded">expand_less</mat-icon>
+                          <mat-icon *ngIf="accordionItem.expanded">expand_more</mat-icon>
+                        </a>
+                      </div>
+                    </mat-nav-list>
+                  </div>
+                  <div class="accordion-item-body" role="region" [style.display]="accordionItem.expanded ? '' : 'none'"
+                    [attr.id]="'accordion-body-' + index" [attr.aria-labelledby]="'accordion-header-' + index">
+                    <mat-nav-list>
+                      <a mat-list-item>Login</a>
+                      <a mat-list-item>Registration</a>
+                      <a mat-list-item>ForgotPassword</a>
+                    </mat-nav-list>
+                  </div>
+                </cdk-accordion-item>
+              </cdk-accordion>
+            </mat-sidenav>
+          </div>
+        </ng-container>
 
-      <mat-sidenav #sidenavRight mode="side" position="end" [opened]="rightToggleSideNav" class="sidenav">
-        <section class="section">
-          <mat-checkbox class="red">Red</mat-checkbox>
-          <mat-checkbox class="teal">Teal Green</mat-checkbox>
-          <mat-checkbox class="blue">Blue</mat-checkbox>
-          <mat-checkbox class="dark">Dark</mat-checkbox>
-        </section>
-      </mat-sidenav>
+        <div fxFlex class="router-outlet">
+          <router-outlet></router-outlet>
+        </div>
 
+        <ng-container *ngIf="isLoggedIn">
+          <mat-sidenav #sidenavRight mode="side" position="end" [opened]="rightToggleSideNav" class="sidenav">
+            <section class="section">
+              <mat-checkbox class="red">Red</mat-checkbox>
+              <mat-checkbox class="teal">Teal Green</mat-checkbox>
+              <mat-checkbox class="blue">Blue</mat-checkbox>
+              <mat-checkbox class="dark">Dark</mat-checkbox>
+            </section>
+          </mat-sidenav>
+        </ng-container>
+      </div>
     </mat-drawer-container>
-    <div class="router-outlet" fxFlexFill>
-      <router-outlet></router-outlet>
-    </div>
   </div>
 </div>

@@ -1,0 +1,35 @@
+
+@mixin btn {
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: normal;
+  min-width: 100px;
+  border-radius: 2px;
+  width: 100%;
+  line-height: 20px;
+  min-height: 40px;
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.8 !important;
+    background-color: $color-gray-3;
+    color: $color-black-1;
+    cursor: not-allowed;
+  }
+}
+@mixin ae-button {
+  &.default {
+    @include btn;
+    color: $color-black-2;
+    background-color: $color-gray-3;
+    border: thin $color-gray-2 solid !important;
+    &:hover {
+      background-color: $color-gray-3 !important;
+      color: $color-black-1 !important;
+    }
+  }
+  &.primary {
+    @include btn;
+    background-color: $color-primary-1 !important;
+    color: $color-white-1 !important;
+  }
+}

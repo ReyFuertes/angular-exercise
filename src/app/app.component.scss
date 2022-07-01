@@ -1,6 +1,12 @@
 
 @import "src/styleguide/index";
 :host ::ng-deep {
+  .mat-drawer-content > div {
+    height: 100%;
+  }
+  .accordion .mat-nav-list {
+    padding: 0;
+  }
   .mat-drawer-inner-container {
     min-width: 240px;
   }

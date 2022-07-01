@@ -1,0 +1,42 @@
+@import "src/styleguide/index";
+.login-container {
+  padding: 20px;
+}
+h4 {
+  font-weight: 500;
+}
+.form-container {
+  padding: 20px 75px;
+}
+button {
+  @include ae-button;
+  font-size: 14px !important;
+  margin-bottom: 10px;
+}
+.register {
+  color: $color-primary-1;
+}
+.rm-fp {
+  margin-bottom: 15px;
+  margin-top: 5px;
+  div {
+    color: $color-black-3;
+    cursor: pointer;
+    &:hover {
+      color: $color-primary-1;
+    }
+  }
+}
+:host ::ng-deep {
+  .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: transparent;
+  }
+  .mat-form-field {
+    width: 100%;
+  }
+  .mat-card {
+    height: 330px;
+    width: 345px;
+    padding: 30px 50px;
+  }
+}

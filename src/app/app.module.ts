@@ -1,6 +1,4 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
@@ -9,7 +7,6 @@ import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { reducers } from './store/root.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { AppEffects } from './store/effects/app.effect';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './services/http-token.interceptor';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -21,7 +18,8 @@ import { MatListModule } from '@angular/material/list';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
+import { AuthGuard } from './services/auth.guard';
+import { AuthModule } from './modules/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -31,7 +29,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     CommonModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    AppRoutingModule,
     MatSidenavModule,
     MatListModule,
     CdkAccordionModule,
@@ -41,9 +38,12 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     StoreRouterConnectingModule.forRoot(),
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([]),
-    SharedModule
+    SharedModule,
+    AppRoutingModule,
+    AuthModule
   ],
   providers: [
+    AuthGuard,
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
