@@ -12,6 +12,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [{
   path: '',
@@ -19,6 +20,9 @@ const routes: Routes = [{
   children: [{
     path: 'login',
     component: LoginComponent
+  }, {
+    path: 'register',
+    component: RegisterComponent
   }]
 }];
 
@@ -27,7 +31,8 @@ const materialModules = [
 
 const components = [
   AuthContainerComponent,
-  LoginComponent
+  LoginComponent,
+  RegisterComponent
 ];
 
 @NgModule({

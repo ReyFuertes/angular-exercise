@@ -13,20 +13,17 @@ button {
   font-size: 14px !important;
   margin-bottom: 10px;
 }
-span.register {
+.login {
   color: $color-primary-1;
-  cursor: pointer;
 }
 .rm-fp {
   margin-bottom: 15px;
   margin-top: 5px;
-  div {
-    color: $color-black-3;
-    cursor: pointer;
-    &:hover {
-      color: $color-primary-1;
-    }
-  }
+  color: $color-black-3;
+}
+span.login {
+  color: $color-primary-1;
+  cursor: pointer;
 }
 :host ::ng-deep {
   .mat-form-field-appearance-fill .mat-form-field-flex {
@@ -36,7 +33,7 @@ span.register {
     width: 100%;
   }
   .mat-card {
-    height: 340px;
+    height: 415px;
     width: 345px;
     padding: 30px 50px;
   }

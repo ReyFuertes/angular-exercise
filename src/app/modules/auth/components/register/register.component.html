@@ -2,7 +2,7 @@
   <mat-card>
     <div fxLayout="column" fxLayoutAlign="center center">
       <img [src]="imgPath + 'logo-icon.png'" />
-      <h4>Login to App</h4>
+      <h4>Register to App</h4>
     </div>
     <div [formGroup]="form">
       <mat-form-field class="full-width" appearance="fill">
@@ -27,15 +27,25 @@
         </mat-error>
       </mat-form-field>
 
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Confirm Password</mat-label>
+        <input type="password" matInput formControlName="password" placeholder="min 6 letter password">
+        <mat-error *ngIf="!form.get('password').hasError('required')">
+          Confirm Password Invalid
+        </mat-error>
+        <mat-error *ngIf="form.get('password').hasError('required')">
+          Confirm Password is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+
       <div class="rm-fp" fxLayout="row" fxLayoutAlign="start center">
-        <div fxFlex="50"><mat-checkbox class="remember-me">Remember Me</mat-checkbox></div>
-        <div fxFlex="50" fxLayoutAlign="end center">Forgot pwd?</div>
+        <mat-checkbox class="i-agree">I agree to the all <span class="terms-link">terms</span>.</mat-checkbox>
       </div>
 
       <button mat-flat-button class="primary">LOGIN</button>
 
       <div fxLayout="row" fxLayoutAlign="center center">
-        <div>Don't have an account? <span class="register" (click)="gotoRegister()">Register</span></div>
+        <div>Don't have an account? <span class="login" (click)="gotoLogin()">Login</span></div>
       </div>
     </div>
   </mat-card>
