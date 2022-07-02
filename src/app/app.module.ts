@@ -7,7 +7,7 @@ import { environment } from '../environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { reducers } from './store/root.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './services/http-token.interceptor';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AppRoutingModule } from './app.routing';
@@ -20,20 +20,26 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AuthGuard } from './services/auth.guard';
 import { AuthModule } from './modules/auth/auth.module';
+import { EmptyPageComponent } from './shared/components/empty-page/empty-page.component';
 
+const materialModules = [
+  MatSidenavModule,
+  MatListModule,
+  CdkAccordionModule,
+  MatIconModule,
+  MatCheckboxModule,
+];
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    EmptyPageComponent
   ],
   imports: [
     CommonModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    MatSidenavModule,
-    MatListModule,
-    CdkAccordionModule,
-    MatIconModule,
-    MatCheckboxModule,
+    ...materialModules,
+    HttpClientModule,
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     StoreRouterConnectingModule.forRoot(),
     StoreModule.forRoot(reducers),

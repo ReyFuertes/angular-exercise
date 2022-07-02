@@ -1,5 +1,8 @@
 
 @import "src/styleguide/index";
+.expanded, .is-active {
+  background-color: $color-gray-3 !important;
+}
 :host ::ng-deep {
   .mat-drawer-content > div {
     height: 100%;

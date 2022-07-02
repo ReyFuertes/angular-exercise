@@ -32,7 +32,7 @@
         <div fxFlex="50" fxLayoutAlign="end center">Forgot pwd?</div>
       </div>
 
-      <button mat-flat-button class="primary">LOGIN</button>
+      <button [disabled]="!form.valid" mat-flat-button class="primary" (click)="onLogin()">LOGIN</button>
 
       <div fxLayout="row" fxLayoutAlign="center center">
         <div>Don't have an account? <span class="register" (click)="gotoRegister()">Register</span></div>

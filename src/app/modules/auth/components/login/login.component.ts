@@ -5,6 +5,7 @@ import { Store } from '@ngrx/store';
 import { GenericDestroyPageComponent } from 'src/app/shared/generics/destroy.generic';
 import { RootState } from 'src/app/store/root.reducer';
 import { environment } from 'src/environments/environment';
+import { loginAction } from '../../store/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -18,8 +19,8 @@ export class LoginComponent extends GenericDestroyPageComponent implements OnIni
   constructor(private router: Router, private store: Store<RootState>, private fb: FormBuilder) {
     super();
     this.form = this.fb.group({
-      username: [null, Validators.required],
-      password: [null, [Validators.required, Validators.minLength(6)]]
+      username: ['rfuertes@gmail.com', Validators.required],
+      password: ['test123', [Validators.required, Validators.minLength(6)]]
     });
   }
 
@@ -27,5 +28,14 @@ export class LoginComponent extends GenericDestroyPageComponent implements OnIni
 
   public gotoRegister(): void {
     this.router.navigateByUrl('register');
+  }
+
+  public onLogin(): void {
+    if(this.form.valid) {
+      const { username, password } = this.form.value;
+      this.store.dispatch(loginAction({
+        payload: { username: String(username).toLowerCase(), password }
+      }));
+    }
   }
 }

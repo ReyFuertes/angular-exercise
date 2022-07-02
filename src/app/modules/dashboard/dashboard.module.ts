@@ -38,7 +38,7 @@ const materialModules = [
     EffectsModule.forFeature([]),
     RouterModule.forChild(routes),
     SharedModule,
-    materialModules
+    ...materialModules
   ],
   exports: [],
   providers: [],

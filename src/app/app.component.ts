@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { Observable, takeUntil } from 'rxjs';
+import { filter, Observable, takeUntil } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { GenericDestroyPageComponent } from './shared/generics/destroy.generic';
 import { RootState } from './store/root.reducer';
@@ -20,10 +21,10 @@ export class AppComponent extends GenericDestroyPageComponent implements OnInit 
   public leftToggleSideNav: boolean = true;
   public rightToggleSideNav: boolean = false;
   public items: string[] = ['Auth'];
+  public previewMode: boolean = false;
 
-  constructor(private store: Store<RootState>) {
+  constructor(private router: Router, private store: Store<RootState>) {
     super();
-    // this.store.dispatch(initAppAction());
   }
 
   ngOnInit(): void {
@@ -31,8 +32,24 @@ export class AppComponent extends GenericDestroyPageComponent implements OnInit 
       takeUntil(this.$unsubscribe))
       .subscribe(isLoggedIn => {
         this.isLoggedIn = isLoggedIn;
-        console.log(this.isLoggedIn)
       });
+
+    this.router.events
+      .pipe(takeUntil(this.$unsubscribe),
+        filter(e => e instanceof NavigationEnd))
+      .subscribe((e: NavigationEnd) => {
+        const inLoginPage = e.urlAfterRedirects.includes('login');
+        if (inLoginPage && this.isLoggedIn === true && this.previewMode === false) {
+          this.router.navigateByUrl('dashboard');
+        } else {
+          this.previewMode = false;
+        }
+      });
+  }
+
+  public gotoLoginPage(): void {
+    this.previewMode = true;
+    this.router.navigateByUrl('login');
   }
 
   public handRightToggleValue(event: boolean): void {

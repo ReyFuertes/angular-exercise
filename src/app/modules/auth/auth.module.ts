@@ -13,6 +13,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { RegisterComponent } from './components/register/register.component';
+import { AuthEffect } from './store/auth.effects';
+import { AuthReducer } from './store/auth.reducers';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 const routes: Routes = [{
   path: '',
@@ -23,6 +26,9 @@ const routes: Routes = [{
   }, {
     path: 'register',
     component: RegisterComponent
+  }, {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent
   }]
 }];
 
@@ -32,7 +38,8 @@ const materialModules = [
 const components = [
   AuthContainerComponent,
   LoginComponent,
-  RegisterComponent
+  RegisterComponent,
+  ForgotPasswordComponent
 ];
 
 @NgModule({
@@ -46,8 +53,8 @@ const components = [
     MatButtonModule,
     MatInputModule,
     MatCheckboxModule,
-    StoreModule.forFeature('auth', {}),
-    EffectsModule.forFeature([]),
+    StoreModule.forFeature('auth', AuthReducer),
+    EffectsModule.forFeature([AuthEffect]),
     RouterModule.forChild(routes),
     SharedModule,
     ...materialModules
