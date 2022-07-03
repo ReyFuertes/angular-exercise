@@ -4,6 +4,7 @@ import { Store, select } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { GenericDestroyPageComponent } from '../../generics/destroy.generic';
 import { RootState } from 'src/app/store/root.reducer';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-topnav',
@@ -21,8 +22,17 @@ export class TopNavComponent extends GenericDestroyPageComponent {
   public leftToggleSideNav: boolean = true;
   public rightToggleSideNav: boolean = false;
 
-  constructor(private router: Router, private store: Store<RootState>) {
+  constructor(private localStorageSrv: StorageService, private router: Router, private store: Store<RootState>) {
     super();
+  }
+
+  public get backgroundColor(): string {
+    const bgColor = this.localStorageSrv.get('bgColor');
+    if(bgColor) {
+      return JSON.parse(bgColor);
+    } else {
+      return '#000048'
+    }
   }
 
   public onRightToggleSideNav(): void {

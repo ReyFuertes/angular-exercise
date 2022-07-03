@@ -14,10 +14,10 @@
     min-width: 240px;
   }
   .mat-drawer-container {
-    height: 100%;
+    height: calc(100% - 64px);
   }
   .sidenav {
-    height: calc(100% - 50px);
+    height: 100%;
   }
   section {
     display: flex;

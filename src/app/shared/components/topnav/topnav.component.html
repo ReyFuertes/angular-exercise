@@ -1,4 +1,4 @@
-<mat-toolbar>
+<mat-toolbar [ngStyle]="{'background-color': backgroundColor}">
   <div *ngIf="showAppSearch" class="app-search show-search">
     <input #search type="text" placeholder="Search Enter" class="form-control" autofocus >
     <button (click)="showAppSearch = !showAppSearch" mat-icon-button>

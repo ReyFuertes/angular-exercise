@@ -48,10 +48,9 @@
         <ng-container *ngIf="isLoggedIn">
           <mat-sidenav #sidenavRight mode="side" position="end" [opened]="rightToggleSideNav" class="sidenav">
             <section class="section">
-              <mat-checkbox class="red">Red</mat-checkbox>
-              <mat-checkbox class="teal">Teal Green</mat-checkbox>
-              <mat-checkbox class="blue">Blue</mat-checkbox>
-              <mat-checkbox class="dark">Dark</mat-checkbox>
+              <ng-container *ngFor="let color of themeColors; let i = index;">
+                <mat-checkbox name="opts" (change)="setTheme(color, i)" [checked]="selectedColor === i" [ngClass]="color">{{color}}</mat-checkbox>
+              </ng-container>
             </section>
           </mat-sidenav>
         </ng-container>

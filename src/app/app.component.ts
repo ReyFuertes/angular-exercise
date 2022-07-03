@@ -3,6 +3,8 @@ import { NavigationEnd, Router } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { filter, Observable, takeUntil } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { StorageService } from './services/storage.service';
+import { themes } from './shared/constants/theme.constant';
 import { GenericDestroyPageComponent } from './shared/generics/destroy.generic';
 import { RootState } from './store/root.reducer';
 import { isLoggedInSelector } from './store/selectors/app.selector';
@@ -22,8 +24,10 @@ export class AppComponent extends GenericDestroyPageComponent implements OnInit 
   public rightToggleSideNav: boolean = false;
   public items: string[] = ['Auth'];
   public previewMode: boolean = false;
+  public themeColors: string[] = ['red', 'teal', 'blue', 'dark'];
+  public selectedColor: any;
 
-  constructor(private router: Router, private store: Store<RootState>) {
+  constructor(private storageService: StorageService, private router: Router, private store: Store<RootState>) {
     super();
   }
 
@@ -45,6 +49,14 @@ export class AppComponent extends GenericDestroyPageComponent implements OnInit 
           this.previewMode = false;
         }
       });
+  }
+
+  public setTheme(event: any, index: number): void {
+    this.selectedColor = index;
+    const theme = themes.find(color => color.label === event);
+    if(theme) {
+      this.storageService.set('bgColor', JSON.stringify(theme.value));
+    }
   }
 
   public gotoLoginPage(): void {
