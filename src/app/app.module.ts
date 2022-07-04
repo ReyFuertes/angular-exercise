@@ -27,7 +27,7 @@ const materialModules = [
   MatListModule,
   CdkAccordionModule,
   MatIconModule,
-  MatCheckboxModule,
+  MatCheckboxModule
 ];
 @NgModule({
   declarations: [

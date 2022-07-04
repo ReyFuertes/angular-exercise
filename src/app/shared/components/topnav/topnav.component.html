@@ -8,21 +8,21 @@
   <div fxLayout="row" fxLayoutAlign="center center" class="logo">
     <img [src]="imgPath + 'cognizant-logo.png'" alt="user">
   </div>
-  <button (click)="onLeftToggleSideNav()" mat-icon-button class="burger-icon">
+  <button matTooltip="Hide Menu" (click)="onLeftToggleSideNav()" mat-icon-button class="burger-icon">
     <mat-icon>menu</mat-icon>
   </button>
-  <button (click)="showSearch()" mat-icon-button class="mat-focus-indicator mat-menu-trigger m-r-5 mat-icon-button mat-button-base">
+  <button matTooltip="Search" (click)="showSearch()" mat-icon-button class="mat-focus-indicator mat-menu-trigger m-r-5 mat-icon-button mat-button-base">
     <mat-icon>search</mat-icon>
   </button>
   <span class="spacer"></span>
-  <button mat-icon-button class="mat-focus-indicator mat-menu-trigger m-r-5 mat-icon-button mat-button-base">
+  <button matTooltip="Message" mat-icon-button class="mat-focus-indicator mat-menu-trigger m-r-5 mat-icon-button mat-button-base">
     <mat-icon>message</mat-icon>
   </button>
-  <button mat-icon-button class="mat-focus-indicator mat-menu-trigger m-r-5 mat-icon-button mat-button-base">
+  <button matTooltip="Email" mat-icon-button class="mat-focus-indicator mat-menu-trigger m-r-5 mat-icon-button mat-button-base">
     <mat-icon>email</mat-icon>
   </button>
   <img [src]="imgPath + 'profile-pic.jpg'" alt="user" class="profile-pic">
-  <button (click)="onRightToggleSideNav()" mat-icon-button class="mat-focus-indicator ml-xs overflow-visible mat-icon-button mat-button-base">
+  <button matTooltip="Settings" (click)="onRightToggleSideNav()" mat-icon-button class="mat-focus-indicator ml-xs overflow-visible mat-icon-button mat-button-base">
     <mat-icon>settings</mat-icon>
   </button>
 </mat-toolbar>
